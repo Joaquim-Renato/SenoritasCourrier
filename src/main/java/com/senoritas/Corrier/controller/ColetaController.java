@@ -9,21 +9,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.senoritas.Corrier.model.Postagem;
-import com.senoritas.Corrier.repository.PostagemRepository;
+import com.senoritas.Corrier.model.Coleta;
+import com.senoritas.Corrier.repository.ColetaRepository;
 
 @RestController
-@RequestMapping("/postagem")
+@RequestMapping("/coleta")
 @CrossOrigin("*")
-public class PostagemController {
+public class ColetaController {
 	
 	@Autowired
-	private PostagemRepository repository;
+	private ColetaRepository coletaRepository;
 	
 	@GetMapping
-	public ResponseEntity<List<Postagem>> GetAll(){
-		return ResponseEntity.ok(repository.findAll());
-		
+	public ResponseEntity <List<Coleta>> GetAll(){
+		return ResponseEntity.ok(coletaRepository.findAll());
 	}
 
 }

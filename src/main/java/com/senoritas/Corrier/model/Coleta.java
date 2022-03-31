@@ -16,9 +16,9 @@ import javax.validation.constraints.Size;
 
 //informações de coleta
 @Entity
-@Table(name = "postagem")
-public class Postagem {
-	
+@Table(name = "coleta")
+public class Coleta {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -28,7 +28,7 @@ public class Postagem {
 	@Size(min = 5, max = 50 )
 	private String tipo;
 	
-//	(descrição breve do que sera transportado pela biker)
+//	(descrição breve do que sera transportado pela biker ou até mesmo especificações)
 	@NotNull 
 	@Size(min = 10, max = 200 ) 
 	private String descricao;
@@ -71,14 +71,6 @@ public class Postagem {
 		this.descricao = descricao;
 	}
 
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
-	}
-
 	public BigDecimal getPeso() {
 		return peso;
 	}
@@ -101,7 +93,16 @@ public class Postagem {
 
 	public void setQtdTransportada(int qtdTransportada) {
 		this.qtdTransportada = qtdTransportada;
-	};
-	
+	}
 
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	
+	
 }
