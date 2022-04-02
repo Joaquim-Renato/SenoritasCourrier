@@ -15,8 +15,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 //informações de coleta
-@Entity
-@Table(name = "coleta")
+@Entity // Cria a tabela
+@Table(name = "tb_coleta")
 public class Coleta {
 
 	@Id
@@ -24,24 +24,24 @@ public class Coleta {
 	private long id;
 	
 //	Tipo de entrega se é comida, documento, entre outros 
-	@NotNull
-	@Size(min = 5, max = 50 )
+	@NotNull (message = "O Tipo de entrega é obrigatorio!!")
+	@Size(min = 5, max = 50, message = "O atributo tipo deve conter entre 5 e 25 caracteres!! ")
 	private String tipo;
 	
-//	(descrição breve do que sera transportado pela biker ou até mesmo especificações)
-	@NotNull 
-	@Size(min = 10, max = 200 ) 
+
+	@Size(min = 10, max = 200, message = "breve descrição do que sera transportado pela biker! max 200 caracteres" ) 
 	private String descricao;
 
 	
-	@NotNull
+	@NotNull (message = "O peso é obrigatorio!! informe quantos kg aprox")
 	private BigDecimal peso; 
 	
-	@NotNull
-	private BigDecimal tamanho;
+	@NotNull (message = "breve descrição contendo o tamanho/volume que sera transportado! Max 100 caracteres")
+	@Size(min = 1, max = 100, message = "quantos CM's aproximadamente?") 
+	private String tamanho;
 	
 	@Min(0)
-	@NotNull
+	@NotNull (message = "A quantidade é relevante!!")
 	private int qtdTransportada;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -79,11 +79,11 @@ public class Coleta {
 		this.peso = peso;
 	}
 
-	public BigDecimal getTamanho() {
+	public String getTamanho() {
 		return tamanho;
 	}
 
-	public void setTamanho(BigDecimal tamanho) {
+	public void setTamanho(String tamanho) {
 		this.tamanho = tamanho;
 	}
 
